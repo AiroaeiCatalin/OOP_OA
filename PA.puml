@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TripPlanner{
+- locations : List<Location>
+
+}
+
+
+abstract class Location{
+- x : int
+- y : int
+
++ getClosestCity() : City
+
+}
+
+
+class Landmark extends Location{
+- name : String
+- entranceFee : int
+- type : LandmarkType
++ setFee() : void
+}
+
+enum LandmarkType {
+GEOLOGICAL,
+BIOLOGICAL,
+CULTURAL
+}
+
+class City extends Location{
+- name : String
+}
+
+class UserLocation extends Location{
+- oldX : List<Integer>
+- oldY : List<Integer>
++ setX() : void
++ setY() : void
+}
+
+TripPlanner o-- Location
+Landmark <-- LandmarkType
+
+@enduml
